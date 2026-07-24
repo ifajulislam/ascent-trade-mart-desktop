@@ -1,8 +1,8 @@
-body {
-  font-family:
-    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial,
-    sans-serif;
-  margin: auto;
-  max-width: 38rem;
-  padding: 2rem;
+/* src/renderer/index.css */
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme {
+  /* your design tokens go here — copy from your Next.js app's globals.css
+     if you already have custom colors/radius/etc. defined there */
 }
