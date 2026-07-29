@@ -1,2 +1,7 @@
-// See the Electron documentation for details on how to use preload scripts:
-// https://www.electronjs.org/docs/latest/tutorial/process-model#preload-scripts
+import { contextBridge, ipcRenderer } from "electron";
+
+// Exposes a highly restricted 'api' object to the React frontend
+// The frontend can call window.api.ping() but cannot touch ipcRenderer directly
+contextBridge.exposeInMainWorld("api", {
+  ping: (): Promise<string> => ipcRenderer.invoke("ping"),
+});
