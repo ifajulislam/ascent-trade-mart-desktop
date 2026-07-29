@@ -1,4 +1,10 @@
-import { defineConfig } from 'vite';
+import { defineConfig } from "vite";
 
-// https://vitejs.dev/config
-export default defineConfig({});
+export default defineConfig({
+  build: {
+    rollupOptions: {
+      // This tells Vite: "Do not try to bundle this package, just leave it alone"
+      external: ["better-sqlite3"],
+    },
+  },
+});
