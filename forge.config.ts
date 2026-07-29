@@ -1,3 +1,6 @@
+// Electron Forge is the tool that turns the code into a real desktop app (like a .exe or .dmg). This file tells Forge exactly how to do that. It holds the security rules (those "Fuses"), tells Forge to use Vite to bundle the code, and configures how the final installer should be built.
+
+import { AutoUnpackNativesPlugin } from "@electron-forge/plugin-auto-unpack-natives";
 import type { ForgeConfig } from "@electron-forge/shared-types";
 import { MakerSquirrel } from "@electron-forge/maker-squirrel";
 import { MakerZIP } from "@electron-forge/maker-zip";
@@ -19,12 +22,10 @@ const config: ForgeConfig = {
     new MakerDeb({}),
   ],
   plugins: [
+    new AutoUnpackNativesPlugin({}),
     new VitePlugin({
-      // `build` can specify multiple entry builds, which can be Main process, Preload scripts, Worker process, etc.
-      // If you are familiar with Vite configuration, it will look really familiar.
       build: [
         {
-          // `entry` is just an alias for `build.lib.entry` in the corresponding file of `config`.
           entry: "src/main.ts",
           config: "vite.main.config.mts",
           target: "main",
